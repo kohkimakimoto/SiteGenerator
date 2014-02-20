@@ -23,11 +23,11 @@ class Config
 
         $this->source = $this->processPath(isset($config['source']) ? $config['source'] : "source");
         $this->dest = $this->processPath(isset($config['dest']) ? $config['dest'] : "dest");
-        $this->public = $this->processPath(isset($config['public']) ? $config['public'] : $this->src."/public");
-        $this->views = $this->processPath(isset($config['views']) ? $config['views'] : $this->src."/views");
-        $this->layouts = $this->processPath(isset($config['layouts']) ? $config['layouts'] : $this->src."/layouts");
-        $this->includes = $this->processPath(isset($config['includes']) ? $config['includes'] : $this->src."/includes");
-        $this->helpers = $this->processPath(isset($config['helpers']) ? $config['helpers'] : $this->src."/helpers");
+        $this->public = $this->processPath(isset($config['public']) ? $config['public'] : $this->source."/public");
+        $this->views = $this->processPath(isset($config['views']) ? $config['views'] : $this->source."/views");
+        $this->layouts = $this->processPath(isset($config['layouts']) ? $config['layouts'] : $this->source."/layouts");
+        $this->includes = $this->processPath(isset($config['includes']) ? $config['includes'] : $this->source."/includes");
+        $this->helpers = $this->processPath(isset($config['helpers']) ? $config['helpers'] : $this->source."/helpers");
     }
 
     public function getParameter($key, $default = null)
