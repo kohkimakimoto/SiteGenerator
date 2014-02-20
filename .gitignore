@@ -1,0 +1,12 @@
+/dest
+/source
+/vendor
+/tmp
+/composer.phar
+/composer.lock
+/.project
+/build
+/tests/tmp/*
+.DS_Store
+Thumbs.db
+/generator.yml
