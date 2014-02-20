@@ -63,6 +63,7 @@ See the `dest` directory.
 * Support generating asset files. 
 * Support watch mode.
 * Support builtin web server.
+* Implement init command.
 
 ## References
 
