@@ -44,13 +44,13 @@ Created directory structure is the following
 Run `generate` command to generate a static site from a source. 
 
 ```Shell
-$ php bin/vendor/site generate
+$ php vendor/bin/site generate
 ```
 
 Also, you can run `generate` command with `--watch` and `--server` options in the development stage.
 
 ```Shell
-$ php bin/vendor/site generate --watch --server
+$ php vendor/bin/site generate --watch --server
 ```
 
 If you use `--server` option, You can see the site at `http://localhost:1234/`.
