@@ -4,7 +4,6 @@ namespace Kohkimakimoto\SiteGenerator\Foundation;
 class Config
 {
     protected $parameters;
-    
     public $source;
     public $dest;
     public $public;
@@ -12,7 +11,8 @@ class Config
     public $layouts;
     public $includes;
     public $helpers;
-    
+    public $server;
+
     public function __construct($config = array())
     {
         if (isset($config['parameters'])) {
@@ -28,6 +28,9 @@ class Config
         $this->layouts = $this->processPath(isset($config['layouts']) ? $config['layouts'] : $this->source."/layouts");
         $this->includes = $this->processPath(isset($config['includes']) ? $config['includes'] : $this->source."/includes");
         $this->helpers = $this->processPath(isset($config['helpers']) ? $config['helpers'] : $this->source."/helpers");
+        $this->server = array();
+        $this->server["port"] = isset($config['server']['port']) ? $config['server']['port'] : "1234";
+        $this->server["host"] = isset($config['server']['host']) ? $config['server']['host'] : "0.0.0.0";
     }
 
     public function getParameter($key, $default = null)

@@ -52,7 +52,7 @@ class Application extends \Symfony\Component\Console\Application
 
         // load user defined helper
         $finder = new Finder();
-        if ($this->config->helpers) {
+        if ($this->config->helpers && is_dir($this->config->helpers)) {
             $finder->files()->name('*.php')->in($this->config->helpers);
             foreach ($finder as $file) {
                 $helper = $file->getRealpath();

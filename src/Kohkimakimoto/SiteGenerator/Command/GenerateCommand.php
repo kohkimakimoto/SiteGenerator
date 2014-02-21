@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
 use Kohkimakimoto\SiteGenerator\Command\Command;
 use Kohkimakimoto\SiteGenerator\Foundation\Generator;
+use Kohkimakimoto\SiteGenerator\HttpServer\HttpServer;
 
 class GenerateCommand extends Command
 {
@@ -19,8 +20,6 @@ class GenerateCommand extends Command
             ->setDefinition(array(
                 new InputOption('watch', null, InputOption::VALUE_NONE, 'Watch source and regenerate site as changes are made.'),
                 new InputOption('server', null, InputOption::VALUE_NONE, 'Start an HTTP server to host your generated site'),
-                new InputOption('host', null, InputOption::VALUE_REQUIRED, 'Host'),
-                new InputOption('port', null, InputOption::VALUE_REQUIRED, 'Port'),
             ))
             ;        
     }
@@ -29,12 +28,18 @@ class GenerateCommand extends Command
     {
         $watch = $input->getOption('watch') ?: false;
         $server = $input->getOption('server') ?: false;
+        $config = $this->getConfig();
 
         $generator = new Generator($this->getConfig());
 
         if ($server) {
 
+            $httpServer = new HttpServer(
+                $config,
+                $output
+            );
 
+            $httpServer->run();
 
         } else {
             do {
