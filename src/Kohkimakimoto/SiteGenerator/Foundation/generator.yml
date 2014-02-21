@@ -1,0 +1,25 @@
+# `dest` is a root directory to put generated site resouces.
+# dest: "dest"
+
+# `source` is a root directory to processing.
+# source: "source"
+
+# `public` is a directory which is copied simply to document root.
+# public: "%source%/public"
+
+# `views` is a directory which is processed to output some resouces to dest directory.
+# views:  "%source%/views"
+
+# `layout` is a directory which stores layout files.
+# layouts:  "%source%/layouts"
+
+# `includes` is a directory which stores include files.
+# includes:  "%source%/includes"
+
+# `helpers` is a directory which includes php files are difined some functions.
+# helpers:  "%source%/helpers"
+
+# `server` is configuration of builtin web server.
+# server:
+#    port: "1234"
+#    host: "0.0.0.0"
