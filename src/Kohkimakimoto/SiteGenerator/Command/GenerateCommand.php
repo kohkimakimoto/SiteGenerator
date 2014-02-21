@@ -30,7 +30,7 @@ class GenerateCommand extends Command
         $server = $input->getOption('server') ?: false;
         $config = $this->getConfig();
 
-        $generator = new Generator($this->getConfig());
+        $generator = new Generator($this->getConfig(), $input, $output);
 
         if ($server) {
 
@@ -38,15 +38,22 @@ class GenerateCommand extends Command
                 $config,
                 $output
             );
+            
+            if ($watch) {
+                $httpServer->addPeriodicTimer(1, function() use ($generator) {
+                    clearstatcache();
+                    $generator->run();
+                });
+            }
 
             $httpServer->run();
 
         } else {
             do {
-                $generator->run($input, $output);
+                $generator->run();
 
                 if ($watch) {
-                    sleep(2);
+                    sleep(1);
                     clearstatcache();
                 }
 

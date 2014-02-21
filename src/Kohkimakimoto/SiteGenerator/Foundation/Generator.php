@@ -10,16 +10,20 @@ use \Michelf\MarkdownExtra;
 class Generator
 {
     protected $config;
+    protected $input;
+    protected $output;
 
-    public function __construct($config)
+    public function __construct($config, $input, $output)
     {
         $this->config = $config;
-    }
-
-    public function run($input, $output)
-    {
         $this->input = $input;
         $this->output = $output;
+    }
+
+    public function run()
+    {
+        $input = $this->input;
+        $output = $this->output;
 
         $output->writeln("<info>Start generating.</info>");
         

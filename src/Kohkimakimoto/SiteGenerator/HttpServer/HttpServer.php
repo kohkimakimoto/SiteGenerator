@@ -13,7 +13,6 @@ use React\Http\Server as ReactHttpServer;
 use React\Socket\Server as ReactSocketServer;
 use Kohkimakimoto\SiteGenerator\Foundation\Config;
 
-
 /**
  * HttpServer
  */
@@ -79,6 +78,17 @@ class HttpServer
         $this->output->writeln('<info>Quit the server with CONTROL-C.</info>');
 
         $this->loop->run();
+    }
+
+    /**
+     * Add a periodic timer
+     *
+     * @param int      $interval Interval
+     * @param callable $callback Callback
+     */
+    public function addPeriodicTimer($interval, $callback)
+    {
+        $this->loop->addPeriodicTimer($interval, $callback);
     }
 
     /**
