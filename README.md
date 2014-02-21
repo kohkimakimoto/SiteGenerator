@@ -25,7 +25,7 @@ $ composer install
 Run `init` command to create a basic directory structure and `generator.yml`.
 
 ```Shell
-$ php bin/vendor/site init
+$ php vendor/bin/site init
 ```
 
 Created directory structure is the following
