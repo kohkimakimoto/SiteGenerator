@@ -1,0 +1,9 @@
+# dest:     "dest"
+# source:   "source"
+# public:   "%source%/public"
+# views:    "%source%/views"
+# layouts:  "%source%/layouts"
+# helpers:  "%source%/helpers"
+# server:
+#    port: "1234"
+#    host: "0.0.0.0"

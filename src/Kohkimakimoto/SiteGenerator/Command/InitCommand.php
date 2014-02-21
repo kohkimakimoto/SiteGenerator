@@ -26,7 +26,7 @@ class InitCommand extends Command
 
         $fs = new Filesystem();
         if (!$fs->exists(getcwd()."/generator.yml")) {
-            $fs->copy(__DIR__."/../Foundation/generator.yml", getcwd()."/generator.yml");
+            $fs->copy(__DIR__."/../Resources/generator.yml", getcwd()."/generator.yml");
             $output->writeln("<info>Created:</info> ".getcwd()."/generator.yml");
         }
 
@@ -43,17 +43,25 @@ class InitCommand extends Command
         if (!$fs->exists($config->views)) {
             $fs->mkdir($config->views, 0755);
             $output->writeln("<info>Created:</info> ".$config->views);
+
+            $fs->copy(__DIR__."/../Resources/source/views/index.md", $config->views."/index.md");
+            $output->writeln("<info>Created:</info> ".$config->views."/index.md");
         }
 
         if (!$fs->exists($config->layouts)) {
             $fs->mkdir($config->layouts, 0755);
             $output->writeln("<info>Created:</info> ".$config->layouts);
+
+            $fs->copy(__DIR__."/../Resources/source/layouts/default.php", $config->layouts."/default.php");
+            $output->writeln("<info>Created:</info> ".$config->layouts."/default.php");
         }
 
+        /*
         if (!$fs->exists($config->includes)) {
             $fs->mkdir($config->includes, 0755);
             $output->writeln("<info>Created:</info> ".$config->includes);
         }
+        */
 
         if (!$fs->exists($config->helpers)) {
             $fs->mkdir($config->helpers, 0755);

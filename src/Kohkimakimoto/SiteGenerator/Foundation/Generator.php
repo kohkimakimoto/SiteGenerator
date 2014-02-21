@@ -12,12 +12,14 @@ class Generator
     protected $config;
     protected $input;
     protected $output;
+    protected $sinceTime;
 
     public function __construct($config, $input, $output)
     {
         $this->config = $config;
         $this->input = $input;
         $this->output = $output;
+        $this->sinceTime = '1970-01-01T00:00:00Z';
     }
 
     public function run()
@@ -37,12 +39,33 @@ class Generator
 
     protected function hasFileModification()
     {
-        return false;
+        $sinceTimeLast = $this->sinceTime;
+        $this->sinceTime = date('c');
+
+        $finder = new Finder();
+        $finder
+            ->files()
+            ->ignoreVCS(true)
+            ->followLinks()
+            ->in($this->config->source)
+            ->date('>= '.$sinceTimeLast)
+            ;
+
+        $isModified = false;
+        foreach ($finder as $file) {
+            $path = $file->getRealpath();
+            $this->output->writeln("<info>Modified: </info><comment>".$path."</comment>");
+            $isModified = true;
+        }
+
+        return $isModified;
     }
 
     protected function processPublic()
     {
-        $this->output->writeln("<info>Process:</info> <comment>public</comment>");
+        if ($this->output->isVerbose()) {
+            $this->output->writeln("<info>Process:</info> <comment>public</comment>");
+        }
         $fs = new Filesystem();
         $finder = new Finder();
 
@@ -54,9 +77,9 @@ class Generator
                 $fs->copy($src, $dest);
 
                 if ($this->output->isVerbose()) {
-                    $this->output->writeln("  <info>Put:</info> $dest (from <comment>$src</comment>)");
+                    $this->output->writeln("<info>Put:</info> $dest (from <comment>$src</comment>)");
                 } else {
-                    $this->output->writeln("  <info>Put:</info> $dest");
+                    $this->output->writeln("<info>Put:</info> $dest");
                 }
             }
         }
@@ -64,7 +87,9 @@ class Generator
 
     protected function processViews()
     {
-        $this->output->writeln("<info>Process:</info> <comment>views</comment>");
+        if ($this->output->isVerbose()) {
+            $this->output->writeln("<info>Process:</info> <comment>views</comment>");
+        }
         $fs = new Filesystem();
         $finder = new Finder();
 
@@ -97,9 +122,9 @@ class Generator
                 file_put_contents($dest, $content);
 
                 if ($this->output->isVerbose()) {
-                    $this->output->writeln("  <info>Put:</info> $dest (from <comment>$src</comment>)");
+                    $this->output->writeln("<info>Put:</info> $dest (from <comment>$src</comment>)");
                 } else {
-                    $this->output->writeln("  <info>Put:</info> $dest");
+                    $this->output->writeln("<info>Put:</info> $dest");
                 }
             }
         }

@@ -1,6 +1,6 @@
 {
   "name": "kohkimakimoto/site-generator",
-  "description": "A minimum static site generator.",
+  "description": "A simple static site generator.",
   "homepage": "https://github.com/kohkimakimoto/SiteGenerator",
   "license": "Apache License 2.0",
   "authors": [
