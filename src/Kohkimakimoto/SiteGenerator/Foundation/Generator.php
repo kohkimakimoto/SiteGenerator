@@ -69,7 +69,7 @@ class Generator
         $fs = new Filesystem();
         $finder = new Finder();
 
-        if ($this->config->public) {
+        if ($this->config->public && is_dir($this->config->public)) {
             $finder->files()->in($this->config->public);
             foreach ($finder as $file) {
                 $src = $file->getRealpath();
@@ -93,7 +93,7 @@ class Generator
         $fs = new Filesystem();
         $finder = new Finder();
 
-        if ($this->config->views) {
+        if ($this->config->views && is_dir($this->config->views)) {
             $finder->files()->in($this->config->views);
             foreach ($finder as $file) {
                 $src = $file->getRealpath();
