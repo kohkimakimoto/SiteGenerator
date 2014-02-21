@@ -25,12 +25,19 @@ class Generator
         $input = $this->input;
         $output = $this->output;
 
+        if (!$this->hasFileModification()) {
+            return;
+        }
+
         $output->writeln("<info>Start generating.</info>");
-        
         $this->processPublic();
         $this->processViews();
-
         $output->writeln("<info>Done.</info>");
+    }
+
+    protected function hasFileModification()
+    {
+        return false;
     }
 
     protected function processPublic()

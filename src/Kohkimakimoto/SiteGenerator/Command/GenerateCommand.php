@@ -40,6 +40,7 @@ class GenerateCommand extends Command
             );
             
             if ($watch) {
+                $output->writeln("<info>Watching file modification.</info>");
                 $httpServer->addPeriodicTimer(1, function() use ($generator) {
                     clearstatcache();
                     $generator->run();
@@ -49,6 +50,10 @@ class GenerateCommand extends Command
             $httpServer->run();
 
         } else {
+            if ($watch) {
+                $output->writeln("<info>Watching file modification.</info>");
+                $output->writeln('<info>Quit watching with CONTROL-C.</info>');
+            }
             do {
                 $generator->run();
 
