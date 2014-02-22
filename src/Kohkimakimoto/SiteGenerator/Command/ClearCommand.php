@@ -11,6 +11,9 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Kohkimakimoto\SiteGenerator\Command\Command;
 
+/**
+ * Clear Command
+ */
 class ClearCommand extends Command
 {
     protected function configure()

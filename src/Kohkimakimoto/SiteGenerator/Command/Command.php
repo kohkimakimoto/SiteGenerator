@@ -7,6 +7,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Base of Command
+ */
 abstract class Command extends \Symfony\Component\Console\Command\Command
 {
     protected $config;

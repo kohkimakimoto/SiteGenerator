@@ -10,6 +10,9 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Kohkimakimoto\SiteGenerator\Command\Command;
 
+/**
+ * Init Command
+ */
 class InitCommand extends Command
 {
     protected function configure()

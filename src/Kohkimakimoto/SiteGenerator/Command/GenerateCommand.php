@@ -10,6 +10,9 @@ use Kohkimakimoto\SiteGenerator\Command\Command;
 use Kohkimakimoto\SiteGenerator\Foundation\Generator;
 use Kohkimakimoto\SiteGenerator\HttpServer\HttpServer;
 
+/**
+ * Generate Command
+ */
 class GenerateCommand extends Command
 {
     protected function configure()
