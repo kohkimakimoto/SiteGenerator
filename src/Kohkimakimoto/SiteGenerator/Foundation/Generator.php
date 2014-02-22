@@ -119,6 +119,9 @@ class Generator
                 $content = $this->processLayout($params, $content);
 
                 // output
+                if (!$fs->exists(dirname($dest))) {
+                    $fs->mkdir(dirname($dest), 0755);
+                }
                 file_put_contents($dest, $content);
 
                 if ($this->output->isVerbose()) {
