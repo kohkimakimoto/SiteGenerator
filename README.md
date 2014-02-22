@@ -32,11 +32,11 @@ Created directory structure is the following
 
 ```
 .
-├── dest             # Root directory to put generated site resouces.
-├── source           # Site source root directory.
+├── dest             # Root directory contains generated site resouces.
+├── source           # Root directory contains source files of site.
 │   ├── helpers      # Helpers contains PHP files are difined some user functions.
-│   ├── layouts      # Layouts contains a layout files.
-│   ├── public       # Public is simply copied to document root.
+│   ├── layouts      # Layouts contains layout files.
+│   ├── public       # Public is simply copied to dest directory.
 │   └── views        # Views is processed to output files to dest directory.
 └── generator.yml    # Main configuration file.
 ```
@@ -54,6 +54,12 @@ $ php vendor/bin/site generate --watch --server
 ```
 
 If you use `--server` option, You can see the site at `http://localhost:1234/`.
+
+If you want to clear the dest directory, you should run `clear` command.
+
+```Shell
+$ php vendor/bin/site clear
+```
 
 ## TODO
 
